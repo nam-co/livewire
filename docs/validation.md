@@ -423,6 +423,24 @@ class CreatePost extends Component
 }
 ```
 
+## Standard laravel validation $rules
+
+Livewire also provides a $rules property for setting validation rules on a per-component basis.
+
+```php
+protected $rules = [
+	'name' => 'required|min:6',
+    'email' => 'required|email',
+    'user.emails.*' => 'sometimes|email', // wildcards work with arrays
+];
+
+//Custom error messages also work
+protected $messages = [
+	'email.required' => 'The Email Address cannot be empty.',
+    'email.email' => 'The Email Address format is not valid.',
+];
+```
+
 ## Testing validation
 
 Livewire provides useful testing utilities for validation scenarios, such as the `assertHasErrors()` method.
